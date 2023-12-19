@@ -39,7 +39,7 @@ const page = () => {
       <div className="form">
         <div style={{width: '100%', whiteSpace: "normal"}}>
           {isLogin !== 'error' && 
-          <Link style={{display: 'block'}} href={'http://localhost:3001/'} target="_blank">Go Home <br/></Link>
+          <Link style={{display: 'block'}} href={'/'} target="_blank">Go Home <br/></Link>
           }
           {isLogin === 'error' && <span>You must login 
             <Link href={'/'} >  click here</Link></span>}
