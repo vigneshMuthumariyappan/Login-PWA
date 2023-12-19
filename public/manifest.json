@@ -3,6 +3,7 @@
     "background_color": "#fff",
     "display": "standalone",
     "start_url": "/account",
+    "scope": "/account",
     "name": "Next PWA",
     "short_name": "Test",
     "description": "PWA login test",
