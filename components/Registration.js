@@ -42,7 +42,12 @@ function Registration() {
             })
             .then(res => res.json())
             .then( res=> {
-                if (res && res.id) router.push('/');
+                if (res && res.id) {
+                    alert('success');
+                    router.push('/');
+                } else {
+                    alert(res.message);
+                }
             })
         } catch (error) {
             console.error(error);

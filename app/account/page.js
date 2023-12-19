@@ -42,7 +42,7 @@ const page = () => {
           <Link style={{display: 'block'}} href={'http://localhost:3001/'} target="_blank">Go Home <br/></Link>
           }
           {isLogin === 'error' && <span>You must login 
-            <Link href={'/'} target="_blank">  click here</Link></span>}
+            <Link href={'/'} >  click here</Link></span>}
           {isLoading && <Skeleton count={4} /> }
           {!isLoading && isLogin.length !== 0 &&  isLogin !== 'error'
           && <>
