@@ -8,7 +8,6 @@ const inter = Inter({ subsets: ['latin'] })
 export const metadata = {
   title: 'Login page',
   description: 'Demo Login page',
-  manifest: '/manifest.json',
 }
 
 export default function RootLayout({ children }) {
