@@ -1,8 +1,8 @@
 {
-    "theme_color": "#f69435",
-    "background_color": "#f69435",
+    "theme_color": "#fff",
+    "background_color": "#fff",
     "display": "standalone",
-    "start_url": "/",
+    "start_url": "/account",
     "name": "Next PWA",
     "short_name": "Test",
     "description": "PWA login test",
