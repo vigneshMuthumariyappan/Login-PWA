@@ -3,7 +3,7 @@ const withPWA = require("@ducanh2912/next-pwa").default({
     dest: "public",
     register: true,
     skipWaiting: true,
-    scope: '/account'
+    scope: '/'
 });
 
 
@@ -13,4 +13,4 @@ module.exports = withPWA({
         userDetail: 'https://api.escuelajs.co/api/v1/auth/profile',
         users: 'https://api.escuelajs.co/api/v1/users'
      }
-});
+}); 
