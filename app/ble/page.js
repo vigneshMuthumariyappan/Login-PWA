@@ -133,6 +133,38 @@ const BleFileTransferExample = () => {
     }
   };
 
+
+   const sendFileBlock = async(fileContents, bytesAlreadySent) => {
+
+    let bytesRemaining = fileContents.byteLength - bytesAlreadySent;
+
+    const maxBlockLength = 128;
+    const blockLength = Math.min(bytesRemaining, maxBlockLength);
+    var blockView = new Uint8Array(
+      fileContents,
+      bytesAlreadySent,
+      blockLength
+    );
+    fileBlockCharacteristic
+      .writeValue(blockView)
+      .then((_) => {
+        bytesRemaining -= blockLength;
+        if (bytesRemaining > 0 && isFileTransferInProgress) {
+            setStatus("File block written - " + bytesRemaining + " bytes remaining");
+            bytesAlreadySent += blockLength;
+            sendFileBlock(fileContents, bytesAlreadySent);
+        }
+      })
+      .catch((error) => {
+        setErrorMessages(error.message);
+        setStatus(
+          "File block write error with " +
+            bytesRemaining +
+            " bytes remaining, see console"
+        );
+      });
+  }
+
   const getTransferedFiled = async () => {
     try {
       console.log('Initiate file get');
