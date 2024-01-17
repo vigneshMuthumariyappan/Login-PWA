@@ -63,9 +63,48 @@ const BleFileTransferExample = () => {
     }
   };
 
-  const transferFile = async (fileContents) => {
+    const prepareDummyFileContents = async () => {
+        const fileInput = document.getElementById('fileInput');
+
+      // Check if a file is selected
+      if (fileInput.files.length > 0) {
+        const file = fileInput.files[0];
+        const readAsTextPromise = (file) => {
+            return new Promise((resolve, reject) => {
+              const reader = new FileReader();
+
+              reader.onload = function(event) {
+                const textContent = event.target.result;
+                resolve(textContent);
+              };
+
+              reader.onerror = function() {
+                reject(new Error('Error reading file.'));
+              };
+
+              reader.readAsText(file);
+            });
+          };
+        try {
+          // Read the file as text using await
+          const textContent = await readAsTextPromise(file);
+
+          // Convert text content to ArrayBuffer
+          const arrayBuffer = new TextEncoder().encode(textContent).buffer;
+
+          return arrayBuffer;
+        } catch (error) {
+          logError(error.message);
+        }
+      } else {
+        logError('No file selected.');
+      }
+  }
+  const transferFile = async () => {
+    const fileContents = await prepareDummyFileContents();
+
     try {
-      let maximumLength = 48000000;
+      const maximumLength = 48000000;
 
       if (fileContents.byteLength > maximumLength) {
         setStatus(`File length is too long: ${fileContents.byteLength} bytes but maximum is ${maximumLength}`);
