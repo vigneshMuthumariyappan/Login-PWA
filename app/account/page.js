@@ -48,6 +48,8 @@ const page = () => {
           && <>
               <span>
                 {JSON.stringify(isLogin)}
+                <br />
+                <Link href={'/ble'}>BLE file transfer</Link>
                 <p style={{color: 'red', cursor: 'pointer'}} onClick={(e) => {
                 setCookies('TOKEN', '', 0);
                 location.reload() }}>Logout</p></span>
