@@ -1,3 +1,5 @@
+import './ble/ble.css'
+
 export const metadata = {
     title: 'Login page',
     description: 'Demo Login page',
