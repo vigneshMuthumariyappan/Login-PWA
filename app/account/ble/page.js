@@ -201,11 +201,14 @@ const BleFileTransferExample = () => {
             fileResivedData.push(mergedBuffer);
             console.log(fileResivedData);
           }
+          setStatus("File block written - " + (decodeFileLength - decodeUnitMaintain)*128+ " bytes remaining");
+          
           await callableFileTransfer();
         }
       }
 
       saveArrayBufferToFile(fileResivedData[0], 'output.txt');
+      setStatus("File received successfully");
 
       function saveArrayBufferToFile(arrayBuffer, fileName) {
         // Convert ArrayBuffer to text
