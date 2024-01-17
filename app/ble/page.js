@@ -1,6 +1,11 @@
 "use client"
 import { useState } from 'react';
 
+var fileBlockCharacteristic, fileLengthCharacteristic, fileMaximumLengthCharacteristic;
+var getBlockOfFileCharacteristic, commandCharacteristic, transferStatusCharacteristic;
+var getFileCharacteristic, getFileLengthCharacteristic;
+var isFileTransferInProgress = false;
+
 const BleFileTransferExample = () => {
   const [errorMessages, setErrorMessages] = useState([]);
   const [status, setStatus] = useState('Click button to connect to the board');
@@ -13,12 +18,6 @@ const BleFileTransferExample = () => {
   const COMMAND_UUID = "bf88b656-3004-4a61-86e0-769c741026c0";
   const TRANSFER_STATUS_UUID = "bf88b656-3005-4a61-86e0-769c741026c0";
   const ERROR_MESSAGE_UUID = "bf88b656-3006-4a61-86e0-769c741026c0";
-
-  let fileBlockCharacteristic, fileLengthCharacteristic, fileMaximumLengthCharacteristic;
-  let getBlockOfFileCharacteristic, commandCharacteristic, transferStatusCharacteristic;
-  let getFileCharacteristic, getFileLengthCharacteristic;
-
-  let isFileTransferInProgress = false;
 
   const connect = async () => {
     setStatus('Requesting device ...');
